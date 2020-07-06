@@ -1,0 +1,30 @@
+dos常用命令
+cd：切换目录
+cd ..: 返回上一级
+md:创建目录
+type: 查看文件
+dir：查看目录中文件内容
+
+
+1、npm常用参数
+-g: 全局安装(建议使用), 安装不带g则是本地环境
+-S,--save 安装包信息将加入到dependencies(生成阶段的依赖)
+-D,--save --dev 安装包信息将加入到devDependencies(开发阶段的依赖)，所以开发阶段一般使用它
+注意：-D命令包括了-S
+npm config set registry http://registry.npm.taobao.org：永久配置淘宝镜像
+i: install的缩写(注意：前面没有"-")
+npm i -g vue-cli:安装脚手架
+npm root -g: 全局安装位置
+本地安装失败是由于缺少初始化的操作，运行命令：npm init -f
+npm和cnpm主要区别是默认的下载站点不同(npm是国外，cnpm是国内)
+vue -V: 查看vue版本
+
+手动搭建vue-cli环境
+1、安装依赖环境：npm install 或者 cnpm install
+2、初始化：npm init -f 或者 cnpm init -f(-f: 是否需要人工干预)
+3、安装组件，并查看安装后的内容
+	cnpm i vue-router -D: 安装router
+	
+	
+卸载vue-cli2:npm uninstall vue-cli -g
+注意：安装卸载需要使用相同的npm或者cnpm命令

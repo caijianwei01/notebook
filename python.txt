@@ -1,0 +1,28 @@
+类中通过实现__call__的特殊方法后
+类的调用，可以和函数一样调用，类()，()传入的参数和更初始化方法有关。
+
+
+
+com.yuetianyun.yunzhu
+com.yuetianyun.yunzhu.ui.activity.LoginActivity
+
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36
+
+
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+
+
+'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+
+'If-None-Match': "5d5c9a9d-6151"
+
+
+0f47c9d74f547029954f031a5e1cac97
+
+
+802d2d164699e2c2f098b4f6347d76f4
+e187c24407754c45b859ccdc12780ddc
+
+
+张小丽

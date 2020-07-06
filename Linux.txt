@@ -1,0 +1,32 @@
+rpm 常用命令
+1.安装一个包 
+# rpm -ivh 
+2.升级一个包 
+# rpm -Uvh 
+3.卸载一个包 ，例如jdk
+rpm -qa|grep jdk  //查看版本
+rpm -e jdk*  //输入查看到的版本
+
+
+1、查看IP命令：
+windows:ipconfig
+Linux:ifconfig
+2、查看端口命令
+windows:netstat -ano
+Linux:netstat -ntlp
+3、解决端口占用问题
+Windows：netstat -ano|findstr "8080"
+找到占用端口的程序的PID -> 打开任务管理器 -> 设置显示PID -> 找到并结束对应程序
+Linux：netstat -ntlp|grep "8080", 找到对应的程序 -> ps -ef|grep "程序名"，找到对应的pid -> kill -9 id
+
+
+
+
+180540
+夏杨依
+35098220110924010X
+夏品灵
+13635208840
+
+
+

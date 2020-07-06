@@ -1,0 +1,129 @@
+﻿导入Selenium2Library时可以加载一下参数
+timeout=5.0, implicit_wait=0.0, run_on_failure=Capture Page Screenshot, screenshot_root_directory=None
+javaws http://47.110.51.57:8081/jenkins/computer/win/slave-agent.jnlp
+
+
+robotframework安装/卸载
+安装：pip install robotframework
+卸载：pip uninstall robotframework
+升级：pip install --upgrade robotframework
+验证安装：robot --version，获取Robot Framework和解释器版本
+windows系统默认安装在Lib/site-packages中。实际的Robot Framework代码位于名为robot的目录中
+类UNIX系统中，安装在/usr/bin或/usr/local/bin中
+
+robot脚本执行：
+从Robot Framework3.0开始，执行脚本使用robot命令
+robot tests.robot
+rebot ouput.xml
+
+执行已经安装的机器人模块
+如果Robot Framework与多个Python版本一起使用，将会特别有用
+python -m robot tests.robot
+
+执行已安装的机器人目录
+python path / to / robot / tests.robot
+
+
+
+
+
+rf脚本格式
+纯文本：建议使用4个空格进行脚本参数的分隔
+
+
+测试库名称
+导入库时使用的测试库的名称与实现它的模块或类的名称相同，导入模块就是导入库
+如果模块名称和类名称不同，则必须使用模块名和类名称来使用库，例如mymodule.MyLibrary或parent.submodule.MyLibrary或parent.submodule.MyLib
+
+为测试库提供参数
+作为类实现的所有测试库都可以使用参数，当RF创建导入库的实例时，它将他们传递给它的构造函数。
+作为模块实现的库不能接受任何参数。
+
+
+测试库范围：ROBOT_LIBRARY_SCOPE
+测试库可以控制何时使用class属性创建新库ROBOT_LIBRARY_SCOPE
+TEST CASE:为每个测试用例创建一个新实例，这是默认值
+TEST SUITE:为每个测试套件创建一个新实例
+GLOBAL:在整个测试执行期间只创建一个实例，并由所有测试用例和测试套件共享。
+注意：如果使用不同的参数多次导入库，则无论范围如何，每次都会创建一个新实例。
+
+指定库版本:ROBOT_LIBRARY_VERSION
+库的版本属性必须是类或模块属性，具体取决于库是作为类还是模块实现的。
+从属性读取版本信息ROBOT_LIBRARY_VERSION,如果ROBOT_LIBRARY_VERSION不存在，则尝试从__version__属性读取信息。
+
+
+指定文档的格式：ROBOT_LIBRARY_DOC_FORMAT
+文档格式的值ROBOT(默认)、HTML、TEXT(纯文本)和reST
+使用reST格式需要在生成文档时安装docutils模块。
+
+
+库充当监听器：ROBOT_LIBRARY_LISTENER
+监听器接口允许外部监听器获取有关测试执行的通知
+
+关键字名称
+自定义关键字的使用，名称不区分大小写，并且忽略空格和下划线
+使用自定义关键字名称，通常使用robot.api.deco.keyword装饰器来完成
+from robot.api.deco import keyword
+
+@keyword('Login Via User Panel')
+def login(username,password):
+	pass
+	
+*** Test Case ***
+My Test
+	Login Via User Panel    ${username}    ${password}
+	
+	
+	
+报告关键字状态：ROBOT_SUPPRESS_NAME
+通过向您的一次添加一个ROBOT_SUPPRESS_NAME带有值的特殊属性True来完成
+
+停止测试执行：ROBOT_EXIT_ON_FAILURE
+用例执行失败，停止整个测试执行。这只需要通过在关键字引发的异常上设置一个特殊ROBOT_EXIT_ON_FAILURE=True属性来完成
+
+尽管失败，仍继续执行测试:ROBOT_CONTINUE_OF_FAILURE
+即使出现故障，也可以继续测试执行。设置ROBOT_CONTINUE_OF_FAILURE=True属性来完
+
+
+jenkins插件
+查看robotframwwork报告，报Opening Robot Framework report failed
+1.临时解决方法，jenkins服务重启后失效
+Jenkins 系统管理 --》 脚本命令行   文本框中输入如下内容：
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP","sandbox allow-scripts; default-src 'none'; img-src 'self' data: ; style-src 'self' 'unsafe-inline' data: ; script-src 'self' 'unsafe-inline' 'unsafe-eval' ;")
+输入后点击Run 按钮即可
+2.永久解决办法
+在配置文件/etc/sysconfig/jenkins中，JENKINS_JAVA_OPTIONS 加入"-Dhudson.model.DirectoryBrowserSupport.CSP=true"
+加入后如下所示：
+JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Dhudson.model.DirectoryBrowserSupport.CSP=true"
+然后重启jenkins
+service jenkins restart
+
+
+
+
+yum install dejavu-sans-fonts.noarch dejavu-sans-mono-fonts.noarch
+
+
+
+常用快捷键：
+自动补全关键字： ctrl+shift+空格
+显示关键字信息： ctrl+鼠标悬浮(鼠标悬浮于关键字上)
+搜索关接字：F5
+局部保存，保存当前测试套件：ctrl+s
+保存整个工程：ctrl+shift+s
+重命名：F2
+执行用例：F8
+创建新工程：ctrl+n
+创建新测试套件：ctrl+shift+F
+创建新用例：ctrl+shift+t
+创建新关键字：ctrl+shift+k
+向上移动用例：ctrl+↑
+向下移动用例：ctrl+↓
+删除行：ctrl+d
+删除单元格：ctrl+shift+d
+插入单元格：ctrl+shift+i
+插入行：ctrl+i
+取消屏蔽: ctrl+$
+屏蔽代码：ctrl+#
+查看log：ctrl+L
+查看report：ctrl+r
