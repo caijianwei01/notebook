@@ -1,0 +1,11 @@
+pipenv的安装使用
+
+pip install pipenv: 安装
+pipenv install: 创建虚拟环境(项目的根目录中执行)，如果有Pipfile文件存在项目根目录中，可以直接下载相应的包
+pipenv shell: 显示地激活虚拟环境(每次安装包时，都需要激活虚拟环境)
+pipenv run python xxx.py: 隐式的执行命令，不用关心虚拟环境是否激活
+pipenv install 包名：安装Python包到虚拟环境中
+切换下载源(阿里镜像)：url = "https://mirrors.aliyun.com/pypi/simple"
+pipenv update 包名： 更新python包
+使用pipenv安装/删除/更新依赖包时，Pipfile以及Pipfile.lock会自动更新
+pipenv graph: 查看当前环境下的依赖情况
