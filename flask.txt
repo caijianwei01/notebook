@@ -1,11 +1,38 @@
 pipenv的安装使用
 
 pip install pipenv: 安装
-pipenv install: 创建虚拟环境(项目的根目录中执行)，如果有Pipfile文件存在项目根目录中，可以直接下载相应的包
-pipenv shell: 显示地激活虚拟环境(每次安装包时，都需要激活虚拟环境)
+pipenv install: 创建虚拟环境(项目的根目录中执行)，如果有Pipfile文件存在项目根目录中，可以直接读取依赖并安装新创建的虚拟环境中
+pipenv shell: 显式地激活虚拟环境(每次安装包时，都需要激活虚拟环境)
 pipenv run python xxx.py: 隐式的执行命令，不用关心虚拟环境是否激活
-pipenv install 包名：安装Python包到虚拟环境中
+pipenv install 包名：安装Python包到虚拟环境中(无论虚拟环境是否激活，都会安装)
 切换下载源(阿里镜像)：url = "https://mirrors.aliyun.com/pypi/simple"
 pipenv update 包名： 更新python包
 使用pipenv安装/删除/更新依赖包时，Pipfile以及Pipfile.lock会自动更新
 pipenv graph: 查看当前环境下的依赖情况
+pip list：虚拟环境中查看包依赖表
+
+
+
+1、自动发现程序实例
+执行flask run命令，自动从当前目录中寻找app.py和我wsgi.py模块
+如果是其它名称，则需要设备环境变量FLASK_APP
+export FLASK_APP=hello：Linux和macOS系统设置
+set FLASK_APP=hello：windows系统设置
+
+2、管理环境变量
+pipenv install python-dotenv: 安装进虚拟环境
+安装了python-dotenv后，Flask加载环境变量的优先级：
+手动设置的环境变量>.evn中设置的环境变量>.flashenv设置的环境变量
+根目录中创建两个文件.env和.flashenv
+.flashenv:用来存储和Flask相关的公开环境变量，比如FLASK_APP
+.env:用来存储包含敏感信息的环境变量
+
+pipenv install watchdog --dev: 安装开发环境，使用Werkzeug的Watchdog重载器
+安装时添加额外的--dev选项，会安装成开发依赖包
+css和js文件，浏览器或缓存这些文件，使用Ctrl+F5或Shift+F5执行硬重载
+
+
+3、flask shell
+exit()或者quit():退出交互环境
+Ctrl+Z并按Enter退出:windows退出
+Ctrl+D退出：Linux和macOS
